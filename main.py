@@ -1,6 +1,12 @@
 
+from services.users import get_user, insert_user, update_user, delete_user
 
-from services.users import get_user, insert_user, update_user
+ 
+@app.post("users/insert/", response_model=dict)
+async def insertUser(name):
+    correct = delete_user(name)
+    
+    return {"correcte":correct}
 
 
 @app.put("users/update/", response_model=dict)
